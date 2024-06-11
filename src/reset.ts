@@ -106,6 +106,7 @@ export const reset = css`
     display: block;
   }
   body {
+    background-color: #111;
     line-height: 1;
   }
   ol,

@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
 import { Movie } from '../../types/movies';
+import { POSTER_URL } from '../../api/endpoints';
 
 const MovieItem = ({ poster_path, title, vote_average }: Movie) => {
   return (
     <MovieItemContainer>
-      <Poster src={poster_path} />
+      <Poster src={`${POSTER_URL}/${poster_path}`} />
       <Title>{title}</Title>
       <Average>{vote_average.toFixed(1)}</Average>
     </MovieItemContainer>

@@ -1,4 +1,3 @@
-import { URLSearchParams } from 'url';
 import { END_POINT } from './endpoints';
 import { Movie } from '../types/movies';
 
