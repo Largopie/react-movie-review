@@ -9,10 +9,10 @@ const meta = {
   tags: ['autodocs'],
   decorators: [
     (Story) => (
-      <div style={{ backgroundColor: '#333' }}>
+      <>
         <Global styles={reset} />
         <Story />
-      </div>
+      </>
     ),
   ],
   component: MovieItem,
