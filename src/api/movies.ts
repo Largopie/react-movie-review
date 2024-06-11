@@ -1,5 +1,5 @@
-import { END_POINT } from './endpoints';
-import { Movie } from '../types/movies';
+import { BASE_URL, END_POINT } from './endpoints';
+import { Movie, MovieDetail, MovieDetailResponse } from '../types/movies';
 
 export const fetchPopularMovies = async (page: number): Promise<Movie[]> => {
   const searchParams = new URLSearchParams();
@@ -16,4 +16,16 @@ export const fetchPopularMovies = async (page: number): Promise<Movie[]> => {
   const data = await response.json();
 
   return data.results;
+};
+
+export const fetchMovieDetail = async (movieId: number): Promise<MovieDetail> => {
+  const searchParams = new URLSearchParams();
+  searchParams.append('language', 'ko-KR');
+
+  const response = await fetch(`${BASE_URL}/${movieId}?${searchParams.toString}`);
+
+  const data = (await response.json()) as MovieDetailResponse;
+  const gereNames = data.genres.map(({ name }) => name);
+
+  return { ...data, genres: gereNames };
 };
