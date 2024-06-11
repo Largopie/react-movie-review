@@ -2,9 +2,15 @@ import styled from '@emotion/styled';
 import { Movie } from '../../types/movies';
 import { POSTER_URL } from '../../api/endpoints';
 
-const MovieItem = ({ poster_path, title, vote_average }: Movie) => {
+interface MovieItemProps {
+  movie: Movie;
+  onClick: (movieId: number) => Promise<void>;
+}
+
+const MovieItem = ({ movie, onClick }: MovieItemProps) => {
+  const { id, poster_path, title, vote_average } = movie;
   return (
-    <MovieItemContainer>
+    <MovieItemContainer onClick={async () => onClick(id)}>
       <Poster src={`${POSTER_URL}/${poster_path}`} />
       <Title>{title}</Title>
       <Average>{vote_average.toFixed(1)}</Average>
